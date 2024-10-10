@@ -29,7 +29,7 @@ export class CartService {
         }
 
         return total;
-      }),
+      })
     );
   }
 
@@ -46,23 +46,17 @@ export class CartService {
 
     this.setProductAmountInCart(
       product,
-      cartValue ? cartValue.amount + 1 : product.minOrderAmount,
+      cartValue ? cartValue.amount + 1 : product.minOrderAmount
     );
   }
 
-  public removeProductFromCart(product: Product, removeAll = false) {
-    const cartValue = this.cart.products.get(product.id);
-
-    if (!cartValue) {
-      return;
-    }
-
-    this.setProductAmountInCart(product, removeAll ? 0 : cartValue.amount - 1);
+  public removeProductFromCart(product: Product) {
+    this.setProductAmountInCart(product, 0);
   }
 
   public setProductAmountInCart(
     product: Product,
-    setAmount = product.minOrderAmount,
+    setAmount = product.minOrderAmount
   ): boolean {
     if (setAmount === 0) {
       this.cart.products.delete(product.id);
@@ -73,8 +67,8 @@ export class CartService {
 
     if (setAmount < product.minOrderAmount) {
       this.toastr.error(
-        'Add to cart failed.',
         `You have to order at least ${product.minOrderAmount} of this item.`,
+        'Cart action failed.'
       );
 
       return false;
@@ -82,8 +76,8 @@ export class CartService {
 
     if (setAmount > product.availableAmount) {
       this.toastr.error(
-        'Add to cart failed.',
-        `There are only ${product.availableAmount} products available.`,
+        `There are only ${product.availableAmount} products of type '${product.name}' available.`,
+        'Cart action failed.'
       );
 
       return false;

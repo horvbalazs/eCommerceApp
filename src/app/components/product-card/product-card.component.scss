@@ -1,0 +1,59 @@
+@import '../../../assets/vars.scss';
+
+:host {
+  display: flex;
+  width: 200px;
+  box-shadow: 1px 1px 2px $black;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white;
+  overflow: hidden;
+
+  header {
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    padding: 8px;
+    background-color: $primary;
+    color: $white;
+    text-transform: capitalize;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 100px;
+    position: relative;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .actions-container {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0;
+
+    .add-to-cart {
+      background-color: $success;
+      color: $white;
+    }
+  }
+
+
+  .skeleton-container {
+    height: 100%;
+    width: 100%;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 4px $black;
+  }
+}

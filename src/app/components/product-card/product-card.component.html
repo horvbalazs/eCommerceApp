@@ -1,0 +1,21 @@
+@if (loaded) {
+  <header>
+    <caption>{{product.name}}</caption>
+  </header>
+  <div class="image-container">
+    <img [ngSrc]="imagePath" fill (error)="handleImageError()"/>
+  </div>
+  <div class="actions-container">
+    @if (numberInCart$|async; as numberInCart;) {
+      <app-amount-control [currentValue]="numberInCart" [min]="product.minOrderAmount" [max]="product.availableAmount" [changeHandler]="updateAmount.bind(this)" (onRemove)="removeFromCart()" />
+    } @else {
+      <button class="add-to-cart" color="secondary" (click)="addToCart($event)" mat-flat-button>Add to cart</button>
+    }
+  </div>
+} @else {
+  <div class="skeleton-container">
+    <p-skeleton styleClass="mb-2" />
+    <p-skeleton styleClass="mb-2" height="100px" />
+    <p-skeleton styleClass="mb-2" />
+  </div>
+}

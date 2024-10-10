@@ -1,1 +1,11 @@
-<p>products works!</p>
+@if(isLoading) {
+  <mat-spinner />
+} @else {
+  <div class="card-container">
+  @for (product of products; track product.id) {
+    <app-product-card [product]="product" />
+  } @empty {
+    <span>No products were found.</span>
+  }
+</div>
+}

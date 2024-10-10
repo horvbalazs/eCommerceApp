@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+@import './assets/vars.scss';
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'ngx-toastr/toastr';
+@include mat.core();
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$azure-palette,
+  ),
+));
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+  ),
+));
+
+html {
+  @include mat.core-theme($dark-theme);
+  @include mat.button-theme($dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    @include mat.core-color($light-theme);
+    @include mat.button-color($light-theme);
+  }
+}
+
+html, body {
+  height: 100%;
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  background-color: $background;
+  margin: 0;
+}
+
+.delete {
+  color: $error;
+}

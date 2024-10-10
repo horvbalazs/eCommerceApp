@@ -8,7 +8,7 @@ import { NgOptimizedImage } from '@angular/common';
   standalone: true,
   imports: [MatToolbar, CartButtonComponent, NgOptimizedImage],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.sass',
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
   public imagePath = 'logo.png';
