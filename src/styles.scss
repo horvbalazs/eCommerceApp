@@ -43,3 +43,7 @@ body {
 .delete {
   color: $error;
 }
+
+.mat-mdc-dialog-surface {
+  border-radius: 8px !important;
+}

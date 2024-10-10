@@ -1,15 +1,40 @@
 @if (loaded) {
   <header>
-    <caption>{{product.name}}</caption>
+    <caption>
+      {{
+        product.name
+      }}
+    </caption>
   </header>
   <div class="image-container">
-    <img [ngSrc]="imagePath" fill (error)="handleImageError()"/>
+    <img [ngSrc]="imagePath" fill (error)="handleImageError()" />
   </div>
-  <div class="actions-container">
-    @if (numberInCart$|async; as numberInCart;) {
-      <app-amount-control [currentValue]="numberInCart" [min]="product.minOrderAmount" [max]="product.availableAmount" [changeHandler]="updateAmount.bind(this)" (onRemove)="removeFromCart()" />
+  @if (fullScreen) {
+    <div class="info-container">
+      <div>
+        <span>Minimum order:</span><span>{{ product.minOrderAmount }}</span>
+      </div>
+      <div>
+        <span>Left in stock:</span><span>{{ leftInStock$ | async }}</span>
+      </div>
+    </div>
+  }
+  <div class="actions-container" (click)="$event.stopPropagation()">
+    @if (numberInCart$ | async; as numberInCart) {
+      <app-amount-control
+        [currentValue]="numberInCart"
+        [min]="product.minOrderAmount"
+        [max]="product.availableAmount"
+        [changeHandler]="updateAmount.bind(this)"
+        (onRemove)="removeFromCart()" />
     } @else {
-      <button class="add-to-cart" color="secondary" (click)="addToCart($event)" mat-flat-button>Add to cart</button>
+      <button
+        class="add-to-cart"
+        color="secondary"
+        (click)="addToCart($event)"
+        mat-flat-button>
+        Add to cart
+      </button>
     }
   </div>
 } @else {

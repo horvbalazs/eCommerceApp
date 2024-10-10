@@ -1,4 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Product } from '../../models/Product';
 import { CartService } from '../../services/cart/cart.service';
 import { map } from 'rxjs';
@@ -24,6 +32,18 @@ export class ProductCardComponent implements OnInit {
   @Input()
   public product!: Product;
 
+  @HostBinding('class.full-screen')
+  @Input()
+  public fullScreen = false;
+
+  @Output()
+  public onClick = new EventEmitter<void>();
+
+  @HostListener('click')
+  public onHostClick() {
+    this.onClick.emit();
+  }
+
   public imagePath: string = '';
   public loaded = false;
 
@@ -34,6 +54,12 @@ export class ProductCardComponent implements OnInit {
 
         return cartItem?.amount ?? 0;
       })
+    );
+  }
+
+  public get leftInStock$() {
+    return this.numberInCart$.pipe(
+      map(value => Math.max(this.product.availableAmount - value, 0))
     );
   }
 

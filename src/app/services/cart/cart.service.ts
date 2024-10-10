@@ -8,6 +8,7 @@ import { map, startWith, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
+  private STORAGE_KEY = 'E_COMMERCE_CART';
   private cart: Cart;
   private cartSubject$: Subject<Cart>;
 
@@ -34,11 +35,15 @@ export class CartService {
   }
 
   constructor(private toastr: ToastrService) {
-    this.cart = {
-      products: new Map(),
-    };
+    const storageValue = localStorage.getItem(this.STORAGE_KEY) ?? '';
+    this.cart = CartService.parseCart(storageValue);
+
+    console.log(this.cart);
 
     this.cartSubject$ = new Subject<Cart>();
+    this.cart$.subscribe(value =>
+      localStorage.setItem(this.STORAGE_KEY, CartService.stringifyCart(value))
+    );
   }
 
   public addProductToCart(product: Product) {
@@ -90,5 +95,22 @@ export class CartService {
 
     this.cartSubject$.next(this.cart);
     return true;
+  }
+
+  private static stringifyCart(cart: Cart): string {
+    return JSON.stringify({
+      ...cart,
+      products: Array.from(cart.products.entries()),
+    });
+  }
+
+  private static parseCart(value: string): Cart {
+    try {
+      const parsed = JSON.parse(value);
+
+      return { ...parsed, products: new Map(parsed.products) };
+    } catch {
+      return { products: new Map() };
+    }
   }
 }

@@ -41,6 +41,19 @@
     }
   }
 
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+    width: 100%;
+    padding-top: 4px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
 
   .skeleton-container {
     height: 100%;
@@ -55,5 +68,16 @@
   &:hover {
     cursor: pointer;
     box-shadow: 1px 1px 4px $black;
+  }
+
+  &.full-screen {
+    width: var(--mat-dialog-container-max-width, 0);
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+
+    .image-container {
+      flex: 1;
+    }
   }
 }
