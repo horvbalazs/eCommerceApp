@@ -36,6 +36,10 @@ export class ProductCardComponent implements OnInit {
   @Input()
   public fullScreen = false;
 
+  @HostBinding('class.list-item')
+  @Input()
+  public listItem = false;
+
   @Output()
   public onClick = new EventEmitter<void>();
 

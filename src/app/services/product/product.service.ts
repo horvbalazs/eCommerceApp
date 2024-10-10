@@ -7,7 +7,7 @@ import { map, Observable, shareReplay, startWith, Subject, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  private api = 'https://63c10327716562671870f959.mockapi.io/products';
+  private readonly api = 'https://63c10327716562671870f959.mockapi.io/products';
   private productsLoadingSubject$: Subject<boolean>;
 
   public products$: Observable<Product[]>;

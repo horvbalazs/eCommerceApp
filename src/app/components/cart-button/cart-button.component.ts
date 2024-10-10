@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrl: './cart-button.component.scss',
 })
 export class CartButtonComponent implements OnDestroy {
-  private unsubscribe$ = new Subject<void>();
+  private readonly unsubscribe$ = new Subject<void>();
   public itemsInCart: number = 0;
 
   constructor(

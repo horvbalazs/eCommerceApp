@@ -8,7 +8,7 @@ import { map, startWith, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  private STORAGE_KEY = 'E_COMMERCE_CART';
+  private readonly STORAGE_KEY = 'E_COMMERCE_CART';
   private cart: Cart;
   private cartSubject$: Subject<Cart>;
 

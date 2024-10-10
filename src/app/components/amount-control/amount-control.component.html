@@ -1,9 +1,6 @@
 <div class="container">
-  @if (form.value <= min) {
-    <button mat-icon-button (click)="handleRemove()"><mat-icon class="delete">delete</mat-icon></button>
-  } @else {
-    <button mat-icon-button (click)="handleSub()"><mat-icon>remove</mat-icon></button>
-  }
+  <button mat-icon-button (click)="handleSub()" [disabled]="form.value <= min"><mat-icon>remove</mat-icon></button>
   <input matInput type="number" [formControl]="form"/>
   <button mat-icon-button (click)="handleAdd()" [disabled]="form.value >= max"><mat-icon>add</mat-icon></button>
+  <button mat-icon-button (click)="handleRemove()"><mat-icon class="delete">delete</mat-icon></button>
 </div>

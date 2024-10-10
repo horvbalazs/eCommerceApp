@@ -1,1 +1,13 @@
-<p>cart works!</p>
+<div class="link-container">
+  <a href="/products"><mat-icon>arrow_back</mat-icon>Continue shopping</a>
+</div>
+<div class="cart-content">
+    <mat-list role="list">
+    @for (item of cartItems$|async; track item.id) {
+      <mat-list-item role="listitem"><app-product-card [product]="item" [listItem]="true" /></mat-list-item>
+    } @empty {
+      <span class="empty">Your cart is empty.</span>
+    }
+  </mat-list>
+</div>
+<button mat-flat-button class="checkout" (click)="handleClick()">Checkout</button>

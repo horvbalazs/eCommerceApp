@@ -12,7 +12,7 @@
 
   header {
     width: 100%;
-    text-align: left;
+    text-align: start;
     white-space: nowrap;
     padding: 8px;
     background-color: $primary;
@@ -65,7 +65,7 @@
     justify-content: space-between;
   }
 
-  &:hover {
+  &:hover:not(.full-screen):not(.list-item) {
     cursor: pointer;
     box-shadow: 1px 1px 4px $black;
   }
@@ -78,6 +78,31 @@
 
     .image-container {
       flex: 1;
+    }
+  }
+
+  &.list-item {
+    width: 100%;
+    flex-direction: row;
+    height: 96px;
+    box-shadow: none;
+
+    .image-container {
+      height: 100%;
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    header {
+      width: 150px;
+      height: 100%;
+      white-space: wrap;
+
+      caption {
+        text-align: start;
+      };
     }
   }
 }
