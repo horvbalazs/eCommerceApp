@@ -29,7 +29,7 @@
     height: 100%;
     overflow-y: auto;
     scrollbar-gutter: stable;
-    padding: 0 8px;
+    padding: 8px;
   }
 
   mat-list-item {
@@ -44,8 +44,23 @@
     }
   }
 
-  .checkout {
+  .summary {
+    display: flex;
     background-color: $primary;
+    color: $white;
+    border-radius: 8px;
+    justify-content: flex-end;
+    gap: 16px;
+    align-items: center;
+    padding: 8px;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .checkout {
+    background-color: $success;
     color: $white;
   }
 }

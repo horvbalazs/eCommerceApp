@@ -27,6 +27,16 @@ export class CartComponent {
       map(cart => Array.from(cart.products.values()))
     );
   }
+
+  public get sumTotal$() {
+    return this.cartItems$.pipe(
+      map(cartItems =>
+        cartItems
+          .reduce<number>((acc, curr) => acc + curr.price * curr.amount, 0)
+          .toFixed(2)
+      )
+    );
+  }
   constructor(
     private cartService: CartService,
     private toast: ToastrService

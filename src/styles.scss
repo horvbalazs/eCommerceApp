@@ -36,7 +36,6 @@ html, body {
 }
 
 body {
-  background-color: $background;
   margin: 0;
 }
 
@@ -49,5 +48,6 @@ body {
 }
 
 .mat-badge-content {
-  width: 32px !important;
+  width: fit-content !important;
+  max-width: 32px !important;
 }

@@ -5,9 +5,14 @@
         product.name
       }}
     </caption>
+    <caption>
+      {{
+        product.price
+      }}$
+    </caption>
   </header>
   <div class="image-container">
-    <img [ngSrc]="imagePath" fill (error)="handleImageError()" />
+    <img [ngSrc]="imagePath" fill (error)="handleImageError()" height="auto" width="auto"/>
   </div>
   @if (fullScreen) {
     <div class="info-container">

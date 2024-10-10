@@ -10,4 +10,7 @@
     }
   </mat-list>
 </div>
-<button mat-flat-button class="checkout" (click)="handleClick()">Checkout</button>
+<div class="summary">
+  <h3>Total: {{sumTotal$|async}} $</h3>
+  <button mat-flat-button class="checkout" (click)="handleClick()">Checkout</button>
+</div>

@@ -1,11 +1,16 @@
+@import '../assets/vars.scss';
+
 :host {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  padding: 8px;
 }
 
 .page-container {
   position: relative;
   flex: 1;
   min-height: 0;
+  background-color: $background;
+  border-radius: 8px;
 }

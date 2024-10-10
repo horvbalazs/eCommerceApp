@@ -1,11 +1,11 @@
-@if(isLoading) {
-  <mat-spinner />
-} @else {
+@if(products$|async; as products) {
   <div class="card-container">
-  @for (product of products; track product.id) {
-    <app-product-card [product]="product" (onClick)="handleOpenModal(product)"/>
-  } @empty {
-    <span>No products were found.</span>
-  }
-</div>
+    @for (product of products; track product.id) {
+      <app-product-card [product]="product" (onClick)="handleOpenModal(product)"/>
+    } @empty {
+      <span>No products were found.</span>
+    }
+  </div>
+} @else {
+  <mat-spinner />
 }

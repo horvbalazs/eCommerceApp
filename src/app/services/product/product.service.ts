@@ -8,19 +8,13 @@ import { map, Observable, shareReplay, startWith, Subject, tap } from 'rxjs';
 })
 export class ProductService {
   private readonly api = 'https://63c10327716562671870f959.mockapi.io/products';
-  private productsLoadingSubject$: Subject<boolean>;
 
   public products$: Observable<Product[]>;
 
   constructor(private http: HttpClient) {
-    this.productsLoadingSubject$ = new Subject<boolean>();
-
-    this.products$ = this.http.get<Product[]>(this.api).pipe(
-      startWith([]),
-      map(this.fixIds),
-      shareReplay(),
-      tap(() => this.productsLoadingSubject$.next(false))
-    );
+    this.products$ = this.http
+      .get<Product[]>(this.api)
+      .pipe(map(this.fixIds), shareReplay());
   }
 
   private fixIds(products: Product[]): Product[] {
