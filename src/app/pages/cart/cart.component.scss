@@ -44,6 +44,10 @@
     }
   }
 
+  .empty {
+    text-align: center;
+  }
+
   .summary {
     display: flex;
     background-color: $primary;
@@ -56,11 +60,21 @@
 
     h3 {
       margin: 0;
+      margin-left: auto;
     }
   }
 
-  .checkout {
-    background-color: $success;
-    color: $white;
+  button:not(:disabled) {
+    &.checkout, &.clear {
+      color: $white;
+    }
+
+    &.checkout {
+      background-color: $success;
+    }
+
+    &.clear {
+      background-color: $error;
+    }
   }
 }

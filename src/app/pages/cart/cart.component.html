@@ -6,11 +6,12 @@
     @for (item of cartItems$|async; track item.id) {
       <mat-list-item role="listitem"><app-product-card [product]="item" [listItem]="true" /></mat-list-item>
     } @empty {
-      <span class="empty">Your cart is empty.</span>
+      <div class="empty">Your cart is empty.</div>
     }
   </mat-list>
 </div>
 <div class="summary">
+  <button mat-flat-button class="clear" [disabled]="isEmpty$|async" (click)="clearCart()">Clear cart</button>
   <h3>Total: {{sumTotal$|async}} $</h3>
-  <button mat-flat-button class="checkout" (click)="handleClick()">Checkout</button>
+  <button mat-flat-button class="checkout" [disabled]="isEmpty$|async" (click)="handleClick()">Checkout</button>
 </div>

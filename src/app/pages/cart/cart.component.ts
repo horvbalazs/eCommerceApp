@@ -37,6 +37,11 @@ export class CartComponent {
       )
     );
   }
+
+  public get isEmpty$() {
+    return this.cartItems$.pipe(map(cartItems => cartItems.length === 0));
+  }
+
   constructor(
     private cartService: CartService,
     private toast: ToastrService
@@ -44,5 +49,9 @@ export class CartComponent {
 
   public handleClick() {
     this.toast.error('Checkout is not implemented.');
+  }
+
+  public clearCart() {
+    this.cartService.clearCart();
   }
 }
