@@ -14,7 +14,6 @@ import { ProductCardComponent } from "../product-card/product-card.component";
   standalone: true,
   imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, ProductCardComponent],
   templateUrl: './product-modal.component.html',
-  styleUrl: './product-modal.component.scss',
 })
 export class ProductModalComponent {
   public readonly data = inject<Product>(MAT_DIALOG_DATA);

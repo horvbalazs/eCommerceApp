@@ -29,6 +29,8 @@ import { AmountControlComponent } from '../amount-control/amount-control.compone
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent implements OnInit {
+  private readonly placeholderPath = 'placeholder.png';
+
   @Input()
   public product!: Product;
 
@@ -88,6 +90,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   public handleImageError() {
-    this.imagePath = 'placeholder.png';
+    this.imagePath = this.placeholderPath;
   }
 }

@@ -38,8 +38,6 @@ export class CartService {
     const storageValue = localStorage.getItem(this.STORAGE_KEY) ?? '';
     this.cart = CartService.parseCart(storageValue);
 
-    console.log(this.cart);
-
     this.cartSubject$ = new Subject<Cart>();
     this.cart$.subscribe(value =>
       localStorage.setItem(this.STORAGE_KEY, CartService.stringifyCart(value))
@@ -95,6 +93,13 @@ export class CartService {
 
     this.cartSubject$.next(this.cart);
     return true;
+  }
+
+  public clearCart() {
+    this.cart = {
+      products: new Map(),
+    };
+    this.cartSubject$.next(this.cart);
   }
 
   private static stringifyCart(cart: Cart): string {

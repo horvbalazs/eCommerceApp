@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -18,7 +17,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, pairwise, startWith } from 'rxjs';
+import { pairwise, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-amount-control',

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../models/Product';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, shareReplay, startWith, Subject, tap } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
+import { IProductService } from './product.service.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class ProductService implements IProductService {
   private readonly api = 'https://63c10327716562671870f959.mockapi.io/products';
 
   public products$: Observable<Product[]>;
